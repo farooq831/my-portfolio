@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './SocialLinks.css'; // Import the CSS file
 
 
 
@@ -64,33 +65,33 @@ const MainCard = () => {
   };
 
   return (
-    <div style={styles.bg}>
-      <div style={styles.card}>
-        <img src={require('./assets/profile.jpg')} alt="Profile" style={styles.avatar}/>
-        <div style={styles.name}>Muhammad Farooq</div>
-        <div style={styles.subtitle}>
-          <span style={styles.oneline}>Information Technology Student @ IIUI | Tech Enthusiast</span>
+    <div className="bg">
+      <div className="card">
+        <img src={require('./assets/profile.jpg')} alt="Profile" className="avatar" />
+        <div className="name">Muhammad Farooq</div>
+        <div className="subtitle">
+          <span className="oneline">Information Technology Student @ IIUI | Tech Enthusiast</span>
         </div>
-        <div style={styles.linksBox}>
+        <div className="linksBox">
           {links.map((link, index) => (
             <div style={{ position: 'relative' }} key={link.label}>
               <a
                 href={link.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                style={styles.linkItem}
+                className="linkItem"
                 aria-label={`Open ${link.label}`}
               >
-                <div style={styles.leftContent}>
+                <div className="leftContent">
                   <img
                     src={require(`./assets/${link.icon}`)}
                     alt={`${link.label} icon`}
-                    style={styles.icon}
+                    className="icon"
                   />
-                  <span style={styles.label}>{link.label}</span>
+                  <span className="label">{link.label}</span>
                 </div>
                 <div
-                  style={styles.moreIconWrapper}
+                  className="moreIconWrapper"
                   title="Share"
                   tabIndex={0}
                   onClick={e => {
@@ -102,11 +103,11 @@ const MainCard = () => {
                 </div>
               </a>
               {openIndex === index && (
-                <div style={styles.shareMenu}>
+                <div className="shareMenu">
                   {shareOptions.map(option => (
                     <div
                       key={option.label}
-                      style={styles.shareOption}
+                      className="shareOption"
                       onClick={() => handleShare(option, link)}
                     >
                       <span style={{ marginRight: '10px' }}>{option.icon}</span>
@@ -124,123 +125,4 @@ const MainCard = () => {
 };
 
 
-const styles = {
-  bg: {
-    minHeight: '100vh',
-    
-    background: 'linear-gradient(135deg, #1b232c 60%, #295f95ff 100%)',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: '0 10px'
-  },
-  card: {
-    width: '628px',
-    background: 'rgba(24,28,38,0.98)',
-    borderRadius: '26px',
-    boxShadow: '0 8px 36px rgba(30,40,60,0.19)',
-    padding: '30px 18px 30px 18px',
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    gap: '18px',
-    border: '2px solid rgba(60,100,180,0.12)',
-  },
-  avatar: {
-    width: '84px',
-    height: '84px',
-    borderRadius: '50%',
-    objectFit: 'cover',
-    border: '4px solid rgba(255,255,255,0.12)',
-    marginBottom: '4px'
-  },
-  name: {
-    fontWeight: 700,
-    fontSize: '1.8rem',
-    color: '#fff',
-    textAlign: 'center',
-    marginBottom: '3px'
-  },
-  subtitle: {
-    width: '100%',
-    textAlign: 'center'
-  },
-  oneline: {
-    fontSize: '1.09rem',
-    fontWeight: 500,
-    color: '#e5eaff',
-    opacity: 0.93,
-    whiteSpace: 'nowrap',
-    overflow: 'hidden',
-    textOverflow: 'ellipsis',
-    maxWidth: '95vw',
-    display: 'inline-block'
-  },
-  linksBox: {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: '16px',
-    width: '100%',
-    fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
-    fontSize: '1.05rem',
-  },
-  linkItem: {
-    background: '#181f27',
-    padding: '16px 22px',
-    borderRadius: '14px',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    textDecoration: 'none',
-    color: '#fff',
-    fontWeight: 600,
-    fontSize: '1.08rem',
-    boxShadow: '0px 2px 7px rgba(30, 30, 30, .07)',
-    transition: 'background 0.2s',
-    border: '1px solid #263242',
-    cursor: 'pointer',
-  },
-  leftContent: {
-    display: 'flex',
-    alignItems: 'center',
-    gap: '18px',
-  },
-  icon: {
-    width: '27px',
-    height: '27px',
-    background: 'none'
-  },
-  label: {
-    flex: 1,
-  },
-  moreIconWrapper: {
-    width: '18px',
-    height: '18px',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    color: '#b6bed9',
-    cursor: 'pointer',
-  },
-  shareMenu: {
-    position: 'absolute',
-    top: 44,
-    right: 24,
-    background: '#222c38',
-    borderRadius: '12px',
-    boxShadow: '0 4px 18px rgba(0,0,0,0.15)',
-    zIndex: 100,
-    padding: '6px 0',
-    minWidth: '160px',
-    color: '#fff',
-  },
-  shareOption: {
-    padding: '10px 14px',
-    cursor: 'pointer',
-    display: 'flex',
-    alignItems: 'center',
-    fontSize: '1rem',
-    borderBottom: '1px solid #334056',
-  }
-};
 export default MainCard;
